@@ -18,7 +18,9 @@ r = requests.get(f'http://api.openweathermap.org/data/2.5/weather?q={location}, 
 
 # Load JSON data into a Python variable.
 weather = json.loads(r.text)
-print(r.text)
+
+# get the variables
+
 city = weather['name']
 country = weather['sys']['country']
 temp = round((weather['main']['temp'] - 273.15), 2)
@@ -32,15 +34,14 @@ humidity = weather['main']['humidity']
 visibility = weather['visibility']
 sunrise = datetime.datetime.utcfromtimestamp(weather['sys']['sunrise']).time()
 sunset = datetime.datetime.utcfromtimestamp(weather['sys']['sunset']).time()
-date = datetime.datetime.now()
-weather_file = open('weather_file.txt', 'a')
+date = datetime.datetime.now().date()
+weather_file = open('today_weather.txt', 'w')
 
-weather_file.write(f'\n'
-                   f'date\n'
+weather_file.write(f'{date}\n'
                    f'\n'
                    f'{city} - {country} \n'
                    f'\n'
-                   f'Clouds  - {cloud_type}\n'
+                   f'clouds  - {cloud_type}\n'
                    f'\n'
                    f'temperature - {temp}\n'
                    f'\n'

@@ -1,5 +1,5 @@
 #! python3
-# getOpenWeather.py - Prints the weather for a location from the command line.
+# weatherDataFetch.py - Prints the weather for a location from the command line.
 
 import requests, json, datetime #sys
 
@@ -9,7 +9,7 @@ location = 'Kumasi' #input('Enter city name: \n')
 
 # Compute location from command line arguments.
 #if len(sys.argv) < 2:
- #   print('Usage: getOpenWeather.py city_name, 2-letter_country_code')
+ #   print('Usage: weatherDataFetch.py city_name, 2-letter_country_code')
  #   sys.exit()
 #location = ' '.join(sys.argv[1:])
 
@@ -35,7 +35,7 @@ visibility = weather['visibility']
 sunrise = datetime.datetime.utcfromtimestamp(weather['sys']['sunrise']).time()
 sunset = datetime.datetime.utcfromtimestamp(weather['sys']['sunset']).time()
 date = datetime.datetime.now().date()
-weather_file = open('today_weather.txt', 'w')
+weather_file = open("Today's_weather.txt", 'w')
 
 weather_file.write(f'{date}\n'
                    f'\n'
